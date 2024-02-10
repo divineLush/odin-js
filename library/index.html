@@ -7,7 +7,39 @@
     <link href="style.css" rel="stylesheet">
   </head>
   <body>
-    <span>qwr</span>
+    <header>
+      <button id="new-book" onclick="displayForm()">NEW BOOK</button>
+    </header>
+    <main>
+    </main>
+    <template id="table">
+      <table>
+        <thead>
+          <tr>
+            <td>TITLE</td>
+            <td>AUTHOR</td>
+            <td>PAGES</td>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </template>
+    <template id="row">
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </template>
+    <template id="form">
+      <form onsubmit="saveBook(event)">
+        <input type="text" name="title" placeholder="TITLE">
+        <input type="text" name="author" placeholder="AUTHOR">
+        <input type="number" name="pages" placeholder="PAGES">
+        <button type="submit">SAVE</button>
+      </form>
+    </template>
     <script src="app.js"></script>
   </body>
 </html>
