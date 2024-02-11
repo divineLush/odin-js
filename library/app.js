@@ -4,6 +4,11 @@ function Book(title, author, pageNum) {
   this.title = title;
   this.author = author;
   this.pageNum = pageNum;
+  this.isRead = false;
+}
+
+Book.prototype.toggleRead = function() {
+  this.isRead = !this.isRead;
 }
 
 const renderTable = () => {
@@ -18,6 +23,7 @@ const addRow = (book) => {
     td[0].textContent = book.title || '-';
     td[1].textContent = book.author || '-';
     td[2].textContent = book.pageNum || '-';
+    td[3].textContent = book.isRead || '-';
     document.querySelector('tbody').appendChild(row);
 }
 
@@ -49,3 +55,7 @@ const saveBook = (event) => {
     addRow(book);
   }
 }
+
+const toggleRead = () => {}
+
+const remove = () => {}
