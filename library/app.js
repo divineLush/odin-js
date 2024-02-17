@@ -24,6 +24,7 @@ const addRow = (book) => {
     td[1].textContent = book.author || '-';
     td[2].textContent = book.pageNum || '-';
     td[3].textContent = book.isRead || '-';
+    row.querySelector('tr').setAttribute('data-title', book.title || '')
     document.querySelector('tbody').appendChild(row);
 }
 
@@ -58,4 +59,9 @@ const saveBook = (event) => {
 
 const toggleRead = () => {}
 
-const remove = () => {}
+const remove = (event) => {
+  const title = event.target.parentElement.parentElement.getAttribute('data-title');
+  document.querySelectorAll(`tr[data-title="${title}"]`).forEach(el => {
+    el.remove()
+  });
+}
