@@ -57,7 +57,13 @@ const saveBook = (event) => {
   }
 }
 
-const toggleRead = () => {}
+const toggleRead = () => {
+    const title = event.target.parentElement.parentElement.getAttribute('data-title');
+    document.querySelectorAll(`tr[data-title="${title}"]`).forEach(el => {
+      const td = el.querySelectorAll('td');
+      td[3].textContent = td[3].textContent === '-' ? '+' : '-';
+    });
+}
 
 const remove = (event) => {
   const title = event.target.parentElement.parentElement.getAttribute('data-title');
