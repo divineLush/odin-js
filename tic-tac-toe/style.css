@@ -1,0 +1,47 @@
+body {
+  background: #292929;
+  color: #d0d0d0;
+  margin: 0;
+  padding: 2rem 4rem;
+  font-family: monospace;
+  font-size: 1rem;
+}
+
+button {
+  background: transparent;
+  color: inherit;
+  font-weight: bold;
+  font-size: inherit;
+  box-shadow: 0 0 2rem .5rem #d0d0d0;
+  border: 1px solid #d0d0d0;
+  outline: none;
+  padding: 1rem 2rem;
+  cursor: pointer;
+}
+
+button:hover,
+button:focus {
+  background: #d0d0d0;
+  color: #292929;
+}
+
+table {
+  margin: auto;
+}
+
+table, td {
+  border: 2px solid #d0d0d0;
+  border-collapse: collapse;
+}
+
+td {
+  padding: 1rem 2rem;
+  height: 20vh;
+  width: 20vh;
+  cursor: pointer;
+}
+
+td:hover {
+  background: #e4bcbc;
+  color: #292929;
+}
