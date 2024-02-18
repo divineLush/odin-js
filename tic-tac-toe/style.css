@@ -44,7 +44,6 @@ td {
   height: 10vh;
   width: 10vh;
   text-align: center;
-  cursor: not-allowed;
 }
 
 td:not(.disabled) {

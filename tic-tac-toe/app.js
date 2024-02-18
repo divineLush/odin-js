@@ -12,6 +12,11 @@ const GameBoard = (() => {
 
   const setResult = (result) => {
     document.querySelector('#result').textContent = result;
+
+    document.querySelectorAll('td').forEach(el => {
+      el.classList.add('disabled');
+      el.replaceWith(el.cloneNode(true));
+    })
   };
 
   const checkVictory = () => {
