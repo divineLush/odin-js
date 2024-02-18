@@ -1,7 +1,6 @@
 const GameBoard = (() => {
   const arr = [null, null, null, null, null, null, null, null, null];
   let currentPlayer = true;
-  // const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   const getRows = () => ([arr.slice(0, 3), arr.slice(3, 6), arr.slice(6, 10)]);
 
