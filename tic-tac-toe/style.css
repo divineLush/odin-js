@@ -19,6 +19,10 @@ button {
   cursor: pointer;
 }
 
+h1 {
+  text-align: center;
+}
+
 button:hover,
 button:focus {
   background: #d0d0d0;
@@ -36,9 +40,10 @@ table, td {
 
 td {
   padding: 1rem 2rem;
-  height: 20vh;
-  width: 20vh;
+  height: 10vh;
+  width: 10vh;
   cursor: pointer;
+  text-align: center;
 }
 
 td:hover {

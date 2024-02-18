@@ -5,7 +5,14 @@ const GameBoard = (() => {
 
   const getRows = () => ([arr.slice(0, 3), arr.slice(3, 6), arr.slice(6, 10)]);
 
+  const getValueByPlayer = () => currentPlayer ? 'X' : 'O';
+
+  const setCurrentPlayer = () => {
+    document.querySelector('#player').textContent = getValueByPlayer();
+  };
+
   const render = () => {
+    setCurrentPlayer();
     const board = document.querySelector('#board');
 
     getRows().forEach((row) => {
@@ -23,10 +30,11 @@ const GameBoard = (() => {
         if (e.target.textContent) {
           return;
         }
-        const value = currentPlayer ? 'x' : 'o';
+        const value = getValueByPlayer();
         arr[idx] = value;
         e.target.textContent = value;
         currentPlayer = !currentPlayer;
+        setCurrentPlayer();
       });
     });
   }
