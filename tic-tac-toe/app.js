@@ -15,6 +15,45 @@ const GameBoard = (() => {
     document.querySelector('#result').textContent = result;
   };
 
+  const checkVictory = () => {
+    const value = getValueByPlayer();
+
+    const checkValue = array => array.every(el => el === value);
+
+    const rows = getRows()
+      .map(row => checkValue(row))
+      .find(el => !!el);
+
+    if (rows) {
+      return true;
+    }
+
+    const diag = (() => {
+      const primary = [arr[0], arr[4], arr[8]];
+      const secondary = [arr[2], arr[4], arr[6]];
+
+      return checkValue(primary) || checkValue(secondary);
+    })();
+
+    if (diag) {
+      return true;
+    }
+
+    const cols = (() => {
+      const first = [arr[0], arr[3], arr[6]];
+      const second = [arr[1], arr[4], arr[7]];
+      const third = [arr[2], arr[5], arr[8]];
+
+      return checkValue(first) || checkValue(second) || checkValue(third);
+    })();
+
+    if (cols) {
+      return true;
+    }
+
+    return false;
+  };
+
   const checkDraw = () => arr.every((el) => !!el);
 
   const render = () => {
@@ -41,6 +80,11 @@ const GameBoard = (() => {
         const value = getValueByPlayer();
         arr[idx] = value;
         e.target.textContent = value;
+
+        if (checkVictory()) {
+          setResult(`PLAYER ${getValueByPlayer()} WINS`);
+          return;
+        }
 
         if (checkDraw()) {
           setResult('DRAW');
