@@ -42,11 +42,15 @@ td {
   padding: 1rem 2rem;
   height: 10vh;
   width: 10vh;
-  cursor: pointer;
   text-align: center;
+  cursor: not-allowed;
 }
 
-td:hover {
+td:not(.disabled) {
+  cursor: pointer;
+}
+
+td:not(.disabled):hover {
   background: #e4bcbc;
   color: #292929;
 }

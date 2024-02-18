@@ -30,6 +30,7 @@ const GameBoard = (() => {
         if (e.target.textContent) {
           return;
         }
+        e.target.classList.add('disabled');
         const value = getValueByPlayer();
         arr[idx] = value;
         e.target.textContent = value;
