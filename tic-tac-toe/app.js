@@ -11,6 +11,12 @@ const GameBoard = (() => {
     document.querySelector('#player').textContent = getValueByPlayer();
   };
 
+  const setResult = (result) => {
+    document.querySelector('#result').textContent = result;
+  };
+
+  const checkDraw = () => arr.every((el) => !!el);
+
   const render = () => {
     setCurrentPlayer();
     const board = document.querySelector('#board');
@@ -30,10 +36,17 @@ const GameBoard = (() => {
         if (e.target.textContent) {
           return;
         }
+
         e.target.classList.add('disabled');
         const value = getValueByPlayer();
         arr[idx] = value;
         e.target.textContent = value;
+
+        if (checkDraw()) {
+          setResult('DRAW');
+          return;
+        }
+
         currentPlayer = !currentPlayer;
         setCurrentPlayer();
       });
