@@ -2,13 +2,13 @@ import DOM from './dom';
 
 const dom = new DOM()
 
-const routes = {
-  '/': { title: 'HOME', render: dom.mainPage.bind(dom) },
-  '/project': { title: 'PROJECT', render: dom.projectPage.bind(dom) },
-  '/todo': { title: 'TODO', render: dom.todoPage.bind(dom) }
-}
-
 export default class Router {
+  routes = {
+    '/': { title: 'HOME', render: dom.mainPage.bind(dom) },
+    '/project': { title: 'PROJECT', render: dom.projectPage.bind(dom) },
+    '/todo': { title: 'TODO', render: dom.todoPage.bind(dom) }
+  }
+
   constructor() {
     window.addEventListener('click', e => {
         if (!e.target.matches('[data-link]')) {
@@ -20,12 +20,12 @@ export default class Router {
         this.navigate()
     })
 
-    window.addEventListener("popstate", this.navigate)
-    window.addEventListener("DOMContentLoaded", this.navigate)
+    window.addEventListener("popstate", this.navigate.bind(this))
+    window.addEventListener("DOMContentLoaded", this.navigate.bind(this))
   }
 
   navigate() {
-    const view = routes[location.pathname]
+    const view = this.routes[location.pathname]
 
     if (view) {
         document.title = view.title
