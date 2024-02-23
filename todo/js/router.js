@@ -9,21 +9,6 @@ export default class Router {
     '/todo': { title: 'TODO', render: dom.todoPage.bind(dom) }
   }
 
-  constructor() {
-    window.addEventListener('click', e => {
-        if (!e.target.matches('[data-link]')) {
-          return
-        }
-
-        e.preventDefault()
-        history.pushState('', '', e.target.href)
-        this.navigate()
-    })
-
-    window.addEventListener("popstate", this.navigate.bind(this))
-    window.addEventListener("DOMContentLoaded", this.navigate.bind(this))
-  }
-
   navigate() {
     const view = this.routes[location.pathname]
 
