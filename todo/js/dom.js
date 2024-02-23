@@ -1,4 +1,5 @@
 import Todo from './todo'
+import Router from './router'
 
 export default class DOM {
   app = document.getElementById('app')
@@ -66,6 +67,11 @@ export default class DOM {
 
     template.querySelector('h2').textContent = todoTitle
     template.querySelector('p').textContent = todoDesc
+    template.querySelector('button').addEventListener('click', () => {
+      new Todo().rmTodo(todoTitle)
+      history.pushState('', '', '/')
+      new Router().navigate()
+    })
 
     app.appendChild(template)
   }

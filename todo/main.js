@@ -13,5 +13,5 @@ window.addEventListener('click', e => {
     router.navigate()
 })
 
-window.addEventListener("popstate", router.navigate.bind(router))
-window.addEventListener("DOMContentLoaded", router.navigate.bind(router))
+window.addEventListener('popstate', router.navigate.bind(router))
+window.addEventListener('DOMContentLoaded', router.navigate.bind(router))
