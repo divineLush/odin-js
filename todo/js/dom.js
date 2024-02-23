@@ -1,3 +1,5 @@
+import Todo from './todo'
+
 export default class DOM {
   app = document.getElementById('app')
 
@@ -9,20 +11,32 @@ export default class DOM {
     return document.getElementById(id).content.cloneNode(true)
   }
 
-  projectsForm() {
-    app.appendChild(this.getTemplate('projects-form'))
+  todoForm() {
+    const form = this.getTemplate('todo-form')
+    form.querySelector('.todo-form').addEventListener('submit', (e) => {
+      e.preventDefault()
+      const formValue = Object.fromEntries(new FormData(e.target));
+      new Todo().appendTodo(formValue)
+      document.querySelector('.todo-wrapper').appendChild(this.getTodoTemplate(formValue))
+    });
+
+    app.appendChild(form)
   }
 
-  projectsList(projects) {
-    const wrapper = this.getTemplate('projects-wrapper');
-    const wrapperEl = wrapper.querySelector('.projects-wrapper');
+  getTodoTemplate(todo) {
+    const template = this.getTemplate('todo')
+    template.querySelector('.todo__title').textContent = todo.title
+    template.querySelector('.todo__desc').textContent = todo.desc
 
-    projects.forEach(({ title, desc }) => {
-      const template = this.getTemplate('project')
-      template.querySelector('.project__title').textContent = title
-      template.querySelector('.project__desc').textContent = desc
+    return template
+  }
 
-      wrapperEl.appendChild(template)
+  todoList(todoList) {
+    const wrapper = this.getTemplate('todo-wrapper');
+    const wrapperEl = wrapper.querySelector('.todo-wrapper');
+
+    todoList.forEach(todo => {
+      wrapperEl.appendChild(this.getTodoTemplate(todo))
     })
 
     app.appendChild(wrapper)
@@ -30,12 +44,8 @@ export default class DOM {
 
   mainPage() {
     this.cleanUp()
-    this.projectsForm()
-    this.projectsList([{ title: 'title', desc: 'desc' }, { title: 'title', desc: 'desc' }, { title: 'title', desc: 'desc' }])
-  }
-
-  projectPage() {
-    this.cleanUp()
+    this.todoForm()
+    this.todoList(new Todo().getTodos())
   }
 
   todoPage() {

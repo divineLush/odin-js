@@ -5,7 +5,6 @@ const dom = new DOM()
 export default class Router {
   routes = {
     '/': { title: 'HOME', render: dom.mainPage.bind(dom) },
-    '/project': { title: 'PROJECT', render: dom.projectPage.bind(dom) },
     '/todo': { title: 'TODO', render: dom.todoPage.bind(dom) }
   }
 

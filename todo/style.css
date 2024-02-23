@@ -62,21 +62,21 @@ textarea:focus {
   box-shadow: 0 0 2rem .5rem #d0d0d0;
 }
 
-.projects-form {
+.todo-form {
   display: flex;
   flex-direction: column;
   max-width: 30%;
   gap: 16px;
 }
 
-.projects-wrapper {
+.todo-wrapper {
   margin-top: 48px;
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
 }
 
-.project {
+.todo {
   padding: 8px;
   cursor: pointer;
   border-radius: 8px;
