@@ -1,26 +1,33 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <title></title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="style.css" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TODO</title>
   </head>
   <body>
-    <main id="app">
-      <form class="project-form">
+    <div id="app"></div>
+
+    <template id="projects-form">
+      <form class="projects-form">
         <input type="text" name="title" placeholder="TITLE" required>
         <textarea placeholder="DESCRIPTION"></textarea>
-        <button type="submit">ADD PROJECT</button>
+        <button type="submit">SUBMIT</button>
       </form>
-      <div id="projects"></div>
-    </main>
+    </template>
+
+    <template id="projects-wrapper">
+      <div class="projects-wrapper"></div>
+    </template>
+
     <template id="project">
-      <div class="project">
+      <a class="project" data-link="/projects">
         <h3 class="project__title"></h3>
         <p class="project__desc"></p>
-      </div>
+      </a>
     </template>
-    <script src="app.js"></script>
+
+    <script type="module" src="/main.js"></script>
   </body>
 </html>
