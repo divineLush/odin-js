@@ -59,5 +59,14 @@ export default class DOM {
 
   todoPage() {
     this.cleanUp()
+
+    const template = this.getTemplate('todo-page')
+    const todoTitle = location.pathname.split('/').pop()
+    const todoDesc = new Todo().getTodo(todoTitle).desc
+
+    template.querySelector('h2').textContent = todoTitle
+    template.querySelector('p').textContent = todoDesc
+
+    app.appendChild(template)
   }
 }
