@@ -9,14 +9,8 @@ export default class Router {
   }
 
   navigate() {
-    const view = this.routes[location.pathname]
-
-    if (view) {
-        document.title = view.title
-        view.render()
-    } else {
-        history.replaceState("", "", "/")
-        routes['/'].render()
-    }
+    const view = location.pathname.includes('todo') ? this.routes['/todo'] : this.routes['/']
+    document.title = view.title
+    view.render()
   }
 }

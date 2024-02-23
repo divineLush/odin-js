@@ -25,8 +25,17 @@ export default class DOM {
 
   getTodoTemplate(todo) {
     const template = this.getTemplate('todo')
-    template.querySelector('.todo__title').textContent = todo.title
-    template.querySelector('.todo__desc').textContent = todo.desc
+    const link = `/todo/${todo.title}`
+
+    template.querySelector('.todo').dataset.link = link
+
+    const title = template.querySelector('.todo__title')
+    title.textContent = todo.title
+    title.dataset.link = link
+
+    const desc = template.querySelector('.todo__desc')
+    desc.textContent = todo.desc
+    desc.dataset.link = link
 
     return template
   }
